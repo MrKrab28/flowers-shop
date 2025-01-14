@@ -32,7 +32,7 @@
                                 required>
                         </div>
                         <div class="mb-3">
-                            <label for="inputPostalCode">Postal Code</label>
+                            <label for="inputPostalCode">Kode Post</label>
                             <input class="form-control" id="inputPostalCode" name="kode_pos" type="text"
                                 autocomplete="off" required>
                         </div>

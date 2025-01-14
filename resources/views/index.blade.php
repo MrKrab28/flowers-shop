@@ -18,12 +18,11 @@
                                 <img src="{{ asset('assets/images/logo/hero2.png') }}" class="img-fluid">
                             </div>
                             <div class="content-wrapper col-md-7 p-5 mb-3">
-                                <h2 class="banner-title display-1 fw-normal">Best destination for <span
-                                        class="text-primary">your
-                                        Kids</span>
-                                </h2>
+                                <h3 class="banner-title display-1 fw-normal">Rangkai Kebahagiaan dalam Setiap <span
+                                        class="text-primary"> Bunga</span>
+                                </h3>
                                 <a href="#product"
-                                    class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
+                                    class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 mt-3">
                                     shop now
                                     <svg width="24" height="24" viewBox="0 0 24 24" class="mb-0">
                                         <use xlink:href="#arrow-right"></use>
