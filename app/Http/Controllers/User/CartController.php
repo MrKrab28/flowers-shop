@@ -71,7 +71,7 @@ class CartController extends Controller
         $order->no_telp = $request->no_telp;
         $order->kode_pos = $request->kode_pos;
         $order->payment = $request->payment;
-        $order->status = 'Pending';
+        $order->status = 'pending';
         $order->save();
 
         foreach (auth()->user()->cartItems as $item) {
@@ -91,17 +91,17 @@ class CartController extends Controller
         //  $order_id = $request->input('id_order');
          $order = Order::with('customer', 'items.product')->find($order->id);
 
-         $user_email = $order->customer->email;
+        //  $user_email = $order->customer->email;
 
 
-         $data_email = [
-             'subject' => 'testing',
-             'pengirim' => 'andidarmansyah73@gmail.com',
-             'order' => $order
+        //  $data_email = [
+        //      'subject' => 'testing',
+        //      'pengirim' => 'andidarmansyah73@gmail.com',
+        //      'order' => $order
 
 
-         ];
-         Mail::to($user_email)->send(new KirimEmail($data_email, 'Pending'));
+        //  ];
+        //  Mail::to($user_email)->send(new KirimEmail($data_email, 'Pending'));
 
         return redirect()->route('orders')->with('success', 'Berhasil membuat pesanan');
     }

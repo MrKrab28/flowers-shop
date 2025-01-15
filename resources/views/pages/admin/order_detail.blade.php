@@ -115,7 +115,7 @@
                     @endif
                 </tbody>
             </table>
-            
+
         </div>
     </div>
 @endsection

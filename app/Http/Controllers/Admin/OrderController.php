@@ -7,13 +7,14 @@ use App\Mail\KirimEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
     public function index($status)
     {
         $data = [
-            'orders' => Order::where('status', $status)->get()
+            'orders' => Order::where('status', $status )->get()
         ];
 
         return view('pages.admin.orders', $data);
@@ -40,27 +41,35 @@ class OrderController extends Controller
             case 'proses':
                 $order = Order::with('customer', 'items.product')->find($order->id);
 
-                $user_email = $order->customer->email;
+                // $user_email = $order->customer->email;
 
 
-                $data_email = [
-                    'subject' => 'testing',
-                    'pengirim' => 'andidarmansyah73@gmail.com',
-                    'order' => $order
+                // $data_email = [
+                //     'subject' => 'testing',
+                //     'pengirim' => 'andidarmansyah73@gmail.com',
+                //     'order' => $order
 
 
-                ];
-                Mail::to($user_email)->send(new KirimEmail($data_email, 'Dikirim'));
+                // ];
+                // Mail::to($user_email)->send(new KirimEmail($data_email, 'Dikirim'));
+
                 $order->status = "Dikirim";
                 break;
 
             default:
-                $order->status = "Pending";
+                $order->status = "pending";
                 break;
         }
 
         $order->update();
 
         return redirect()->route('admin.orders', $status);
+    }
+
+    public function cetakpdf()
+    {
+
+        // $pdf = Pdf::loadView('pdf.invoice', $data);
+        // return $pdf->stream('Mail.KirimEmail');
     }
 }
