@@ -1,6 +1,6 @@
 @extends('layouts.vertical')
 
-@section('title', 'Pesanan ' . ucfirst(request()->route('status')))
+@section('title', 'Pesanan ' . request()->route('status'))
 
 @section('content')
     <div class="card">
@@ -9,7 +9,7 @@
                 <h5 class="mb-0">Daftar Pesanan</h5>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body"> 
             <table class="table table-hover" id="table">
                 <thead>
                     <tr>

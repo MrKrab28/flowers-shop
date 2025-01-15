@@ -31,7 +31,7 @@ class OrderController extends Controller
     public function terima($id)
     {
         $order = Order::find($id);
-        $order->status = "Diterima";
+        $order->status = "diterima";
         $order->update();
 
         return redirect()->route('orders')->with('success', 'Pesanan telah diterima');

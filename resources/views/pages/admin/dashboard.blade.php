@@ -59,15 +59,21 @@
             </div>
         </div>
     </div>
-
-    <div class="card mt-4">
+    <div class="row mt-5">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <img src="{{ asset('assets/images/logo/logo-194297012-1716934698-ff5d28e54b4ac4eaa659d9d2930c9ac71716934698.png') }}" style="height: 500px;" alt="">
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    {{-- <div class="card mt-4">
         <div class="card-header">
             <h5>Penjualan Minggu Ini</h5>
         </div>
         <div class="card-body">
             <div id="minggu-ini"></div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @push('scripts')

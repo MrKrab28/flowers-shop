@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('kode_pos');
             $table->enum('payment', ['Cash on Delivery', 'Transfer']);
-            $table->enum('status', ['Pending', 'Proses', 'Dikirim', 'Diterima']);
+            $table->enum('status', ['pending', 'proses', 'dikirim', 'diterima']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

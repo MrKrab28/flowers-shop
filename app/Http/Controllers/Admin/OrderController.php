@@ -6,15 +6,21 @@ use App\Models\Order;
 use App\Mail\KirimEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Mail;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class OrderController extends Controller
 {
     public function index($status)
     {
+        $statusMap = [
+            'selesai' => 'diterima'
+        ];
+
+        $statusToFind = $statusMap[$status] ?? $status;
         $data = [
-            'orders' => Order::where('status', $status )->get()
+            'orders' => Order::where('status', $statusToFind )->get()
         ];
 
         return view('pages.admin.orders', $data);
@@ -22,7 +28,12 @@ class OrderController extends Controller
 
     public function detail($status, $id)
     {
-        $order = Order::where('status', $status)->where('id', $id)->first();
+        $statusMap = [
+            'selesai' => 'diterima'
+        ];
+
+        $statusToFind = $statusMap[$status] ?? $status;
+        $order = Order::where('status', $statusToFind)->where('id', $id)->first();
 
         if ($order) {
             return view('pages.admin.order_detail', compact('order'));
@@ -35,7 +46,7 @@ class OrderController extends Controller
         $order = Order::where('status', $status)->where('id', $id)->first();
         switch ($status) {
             case 'pending':
-                $order->status = "Proses";
+                $order->status = "proses";
                 break;
 
             case 'proses':
@@ -53,7 +64,7 @@ class OrderController extends Controller
                 // ];
                 // Mail::to($user_email)->send(new KirimEmail($data_email, 'Dikirim'));
 
-                $order->status = "Dikirim";
+                $order->status = "dikirim";
                 break;
 
             default:
@@ -66,10 +77,13 @@ class OrderController extends Controller
         return redirect()->route('admin.orders', $status);
     }
 
-    public function cetakpdf()
+    public function cetakLaporan(Order $order)
     {
 
-        // $pdf = Pdf::loadView('pdf.invoice', $data);
-        // return $pdf->stream('Mail.KirimEmail');
+        $orders = Order::with('items' , 'customer')->where('status', 'diterima')->get();
+
+
+        $pdf = PDF::loadView('pages.admin.laporan-order', compact('orders'));
+        return $pdf->stream('laporan-order.pdf');
     }
 }

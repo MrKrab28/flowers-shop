@@ -27,7 +27,7 @@
         <div class="page-body-wrapper">
 
             @include('includes.admin.sidebar')
-            <div class="page-body">
+            <div class="page-body mt-5  ">
                 <div class="container-fluid">
                     <div class="page-title">
                         <h4>@yield('title', 'Dashboard')</h4>

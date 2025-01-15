@@ -55,7 +55,7 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
-                        @if ($order->status == 'Diterima')
+                        @if ($order->status == 'diterima')
                             <th></th>
                         @endif
                     </tr>
@@ -77,12 +77,12 @@
                                 {{ $item->qty }}
                             </td>
                             <td>Rp. {{ number_format($item->total) }}</td>
-                            @if ($order->status == 'Diterima')
+                            @if ($order->status == 'diterima')
                                 <td class="text-center">
                                     @if ($item->review)
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= $item->review->score)
-                                                <i class="fa fa-star text-warning"></i>
+                                                <i class="fa fa-star text-primary"></i>
                                             @else
                                                 <i class="fa fa-star"></i>
                                             @endif
@@ -137,13 +137,13 @@
                     @endforeach
 
                     <tr>
-                        <td class="total-amount" colspan="{{ $order->status == 'Diterima' ? '5' : '4' }}">
+                        <td class="total-amount" colspan="{{ $order->status == 'diterima' ? '5' : '4' }}">
                             <h6 class="m-0 text-end"><span class="f-w-600">Total Price :</span></h6>
                         </td>
                         <td><span>Rp. {{ number_format($order->items->sum('total')) }}</span>
                         </td>
                     </tr>
-                    @if ($order->status == 'Dikirim')
+                    @if ($order->status == 'dikirim')
                         <tr>
                             <td class="text-end" colspan="5">
                                 <button class="btn btn-warning cart-btn-transform" onclick="terimaPesanan()">
@@ -167,7 +167,11 @@
 @endsection
 
 @push('styles')
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/rating.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/rating.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @endpush
 
 @push('scripts')

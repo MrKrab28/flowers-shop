@@ -30,7 +30,7 @@
                                     <td>
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= $product->rating)
-                                                <i class="fa fa-star text-warning"></i>
+                                                <i class="fa fa-star text-primary"></i>
                                             @else
                                                 <i class="fa fa-star"></i>
                                             @endif

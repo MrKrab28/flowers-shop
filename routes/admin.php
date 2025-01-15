@@ -38,7 +38,9 @@ Route::group(['middleware' => 'auth:admin', 'as' => 'admin.'], function () {
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::post('send-email', [EmailController::class, 'index'])->name('kirim-email');
-    Route::get('cari-email', [EmailController::class, 'cariemail'])->name('get-email');
-    Route::post('tes-email', [EmailController::class, 'tes'])->name('tes-email');
+    // Route::post('send-email', [EmailController::class, 'index'])->name('kirim-email');
+    // Route::get('cari-email', [EmailController::class, 'cariemail'])->name('get-email');
+    // Route::post('tes-email', [EmailController::class, 'tes'])->name('tes-email');
+
+    Route::get('laporan', [OrderController::class, 'CetakLaporan'])->name('laporan');
 });
